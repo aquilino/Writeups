@@ -34,6 +34,9 @@ Service detection performed. Please report any incorrect results at https://nmap
 ## Enumeracion de archivos y carpetas
 
 ~~~
+
+dirsearch -u http://10.10.10.93 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -f -t 64 -e txt,html,php,jpg
+
 [16:24:44] 200 -   10KB - /index.html
 [16:24:47] 403 -  276B  - /icons/      
 [16:25:10] 200 -   34KB - /cat.jpg              
@@ -45,6 +48,13 @@ Service detection performed. Please report any incorrect results at https://nmap
 En robots.txt nos pone que busquemos al usuario. --> find user :) .
 
 Tenemos una imagen que contiene un codigo raro con strings cat.jpg lo veremos.
+
+Tambien si le hacemos un file a la imagen nos reporta de donde sale la foto
+
+~~~
+file cat.jpg 
+cat.jpg: JPEG image data, JFIF standard 1.01, resolution (DPI), density 72x72, segment length 16, comment: "File source: https://commons.wikimedia.org/wiki/File:Cat03.jpg", baseline, precision 8, 481x480, components 3
+~~~
 
 ```bash
 >C<;_"!~}|{zyxwvutsrqponmlkjihgfedcba`_^]\[ZYXWVUTSRQPONMLKJ`_dcba`_^]\Uy<XW
