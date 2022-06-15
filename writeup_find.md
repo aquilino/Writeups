@@ -89,7 +89,7 @@ Con sudo -l podemos ejecutar perl en gtfobins encontramos la manera de ejecutar 
 
 ~~~
 xxxxxx@find:~$ sudo -l
-[sudo] password for missyred: 
+[sudo] password for xxxxx: 
 Matching Defaults entries for xxxxxxx on find:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
 
